@@ -35,7 +35,7 @@ namespace Lab2
                 }
                 else if (key == "Destination")
                 {
-                    races = races.Where(x => x.Departure == value).ToList();
+                    races = races.Where(x => x.Destination == value).ToList();
                 }
                 else if (key == "DepartureDateTime")
                 {
