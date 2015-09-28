@@ -8,14 +8,15 @@ using System.Web;
 using System.Web.ModelBinding;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Configuration;
 
 namespace Lab2
 {
     public partial class AdminPage : System.Web.UI.Page
     {
-        private static string _fileWithID = @"C:\Storage\id.txt";
+        private static string _fileWithID = WebConfigurationManager.AppSettings["_idData"];
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)    // Session check
         {
             if (Session["admin"] == null)
             {
@@ -23,12 +24,12 @@ namespace Lab2
             }
         }
 
-        public IEnumerable<Race> GetRaces()
+        public IEnumerable<Race> GetRaces() // Get races
         {
             return RaceManagment.GetAllRaces();
         }
 
-        public void UpdateRace(int ID)
+        public void UpdateRace(int ID)  // Update race
         {
             Race race = new Race();
             if (TryUpdateModel(race, new FormValueProvider(ModelBindingExecutionContext)))
@@ -37,12 +38,12 @@ namespace Lab2
             }
         }
 
-        public void DeleteRace(int ID)
+        public void DeleteRace(int ID)  // Delete race
         {
             RaceManagment.DeleteRace(ID);
         }
 
-        public void InsertRace()
+        public void InsertRace()    // New race
         {
             Race race = new Race();
             if (TryUpdateModel(race, new FormValueProvider(ModelBindingExecutionContext)))

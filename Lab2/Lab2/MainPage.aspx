@@ -26,7 +26,7 @@
             </LayoutTemplate>
             <ItemTemplate>
                 <tr>
-                    <td><%# Item.Aeroport %></td>
+                    <td><%# Item.Airport %></td>
                     <td><%# Item.Departure %></td>
                     <td><%# Item.Destination %></td>
                     <td><%# Item.CorrectDepartureDateTime %></td>
@@ -35,7 +35,7 @@
             </ItemTemplate>
         </asp:ListView>
         <asp:DropDownList ID="DropDownList1" runat="server">
-            <asp:ListItem Value="Aeroport">Аэропорт</asp:ListItem>
+            <asp:ListItem Value="Airport">Аэропорт</asp:ListItem>
             <asp:ListItem Value="Departure">Пункт вылета</asp:ListItem>
             <asp:ListItem Value="Destination">Пункт назначения</asp:ListItem>
             <asp:ListItem Value="DepartureDateTime">Дата и время вылета</asp:ListItem>

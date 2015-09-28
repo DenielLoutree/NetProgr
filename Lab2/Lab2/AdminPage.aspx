@@ -27,7 +27,7 @@
             </LayoutTemplate>
             <ItemTemplate>
                 <tr>
-                    <td><%# Item.Aeroport %></td>
+                    <td><%# Item.Airport %></td>
                     <td><%# Item.Departure %></td>
                     <td><%# Item.Destination %></td>
                     <td><%# Item.DepartureDateTime %></td>
@@ -41,7 +41,7 @@
             </ItemTemplate>
             <EditItemTemplate>
                 <tr>
-                    <td><input name="Aeroport" value="<%# Item.Aeroport%>"/>
+                    <td><input name="Airport" value="<%# Item.Airport%>"/>
                         <input type="hidden" name="ID" value="<%# Item.ID%>" />
                     </td>
                     <td><input name="Departure" value="<%# Item.Departure%>"/></td>
@@ -57,7 +57,7 @@
             </EditItemTemplate>
             <InsertItemTemplate>
                 <tr>
-                    <td><input name="Aeroport"/>
+                    <td><input name="Airport"/>
                         <input type="hidden" name="ID" value="0" />
                     </td>
                     <td><input name="Departure"/></td>

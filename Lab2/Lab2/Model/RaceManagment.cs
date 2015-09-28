@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 
 namespace Lab2.Model
 {
     public class RaceManagment
     {
-        private static string _fileWithRaces = @"C:\Storage\races.txt";
+        private static string _fileWithRaces = WebConfigurationManager.AppSettings["_raceData"];
 
         private static string _crazyToken = "___haafnc___";
 
-        public static string CrazyToken
+        public static string CrazyToken // Separator
         {
             get
             {
@@ -20,7 +21,7 @@ namespace Lab2.Model
             }
         }
 
-        public static List<Race> GetAllRaces()
+        public static List<Race> GetAllRaces()  // Returns all races data
         {
             List<Race> result = new List<Race>();
             string[] lines = File.ReadAllLines(_fileWithRaces);
@@ -31,7 +32,7 @@ namespace Lab2.Model
             return result;
         }
 
-        public static void DeleteRace(int id)
+        public static void DeleteRace(int id)   // Delete race
         {
             List<Race> races = GetAllRaces();
             races.RemoveAll(x => x.ID == id);
@@ -42,10 +43,10 @@ namespace Lab2.Model
             }
         }
 
-        public static void AddRace(Race race)
+        public static void AddRace(Race race)   // Add race
         {
             string token = "";
-            string[] strings = { race.ID.ToString(), race.Aeroport, race.Departure, race.Destination, race.DepartureDateTime.ToString(), race.DestinationDateTime.ToString(), race.DelayTimeSpan.ToString() };
+            string[] strings = { race.ID.ToString(), race.Airport, race.Departure, race.Destination, race.DepartureDateTime.ToString(), race.DestinationDateTime.ToString(), race.DelayTimeSpan.ToString() };
             foreach (string x in strings)
             {
                 token += x;
@@ -54,7 +55,7 @@ namespace Lab2.Model
             File.AppendAllLines(_fileWithRaces, new string[] { token });
         }
 
-        public static void UpdateRace(Race race)
+        public static void UpdateRace(Race race)    // Modify race
         {
             List<Race> races = GetAllRaces();
             races.RemoveAll(x => x.ID == race.ID);

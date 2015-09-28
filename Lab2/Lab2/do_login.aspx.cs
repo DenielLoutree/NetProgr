@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Configuration;
 
 namespace Lab2
 {
@@ -11,7 +12,7 @@ namespace Lab2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request["username"] == "admin" && Request["userpassword"] == "admin")
+            if (Request["username"] == WebConfigurationManager.AppSettings["_login"] && Request["userpassword"] == WebConfigurationManager.AppSettings["_password"])
             {
                 Session.Add("admin", new object());
                 Response.Redirect("AdminPage.aspx");

@@ -10,7 +10,7 @@ namespace Lab2
 {
     public partial class MainPage : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)    // Load admin page
         {
             if (Session["admin"] != null)
             {
@@ -18,16 +18,16 @@ namespace Lab2
             }
         }
 
-        public IEnumerable<Race> GetRaces()
+        public IEnumerable<Race> GetRaces() // Get races according to filter
         {
             List<Race> races = RaceManagment.GetAllRaces();
             string key = Request["key"];
             string value = Request["value"];
             if (key != null && value != null)
             {
-                if (key == "Aeroport")
+                if (key == "Airport")
                 {
-                    races = races.Where(x => x.Aeroport == value).ToList();
+                    races = races.Where(x => x.Airport == value).ToList();
                 }
                 else if (key == "Departure")
                 {

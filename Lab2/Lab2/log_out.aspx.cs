@@ -9,7 +9,7 @@ namespace Lab2
 {
     public partial class log_out : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)    // Logout
         {
             Session.Remove("admin");
             Response.Redirect("MainPage.aspx");

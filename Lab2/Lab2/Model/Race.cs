@@ -9,7 +9,7 @@ namespace Lab2.Model
     {
         public int ID { get; set; }
 
-        public string Aeroport { get; set; }
+        public string Airport { get; set; }
 
         public string Departure { get; set; }
 
@@ -26,11 +26,11 @@ namespace Lab2.Model
 
         }
 
-        public Race(string token)
+        public Race(string token)   // Parses race data
         {
             string[] data = token.Split(new string[] { RaceManagment.CrazyToken }, StringSplitOptions.RemoveEmptyEntries);
             ID = int.Parse(data[0]);
-            Aeroport = data[1];
+            Airport = data[1];
             Departure = data[2];
             Destination = data[3];
             DepartureDateTime = DateTime.Parse(data[4]);
@@ -38,7 +38,7 @@ namespace Lab2.Model
             DelayTimeSpan = TimeSpan.Parse(data[6]);
         }
 
-        public string CorrectDepartureDateTime
+        public string CorrectDepartureDateTime  // Departure with delay
         {
             get
             {
@@ -46,7 +46,7 @@ namespace Lab2.Model
             }
         }
 
-        public string CorrectDestinationDateTime
+        public string CorrectDestinationDateTime    // Arrival with delay
         {
             get
             {

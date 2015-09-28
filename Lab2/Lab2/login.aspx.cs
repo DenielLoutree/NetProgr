@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Configuration;
 
 namespace Lab2
 {
@@ -14,12 +15,12 @@ namespace Lab2
 
         }
 
-        protected string GetErrorMessage()
+        protected string GetErrorMessage()  // Login error
         {
             string result = null;
             if (Session["error"] != null)
             {
-                result = string.Format("<div><label class=\"text_label\" style=\"color: red\">{0}</label></div><br>", "Невозможно выполнить вход. Введены некорректные данные.");
+                result = string.Format("<div><label class=\"text_label\" style=\"color: red\">{0}</label></div><br>", WebConfigurationManager.AppSettings["_errorLogin"]);
                 Session.Remove("error");
             }
             return result;
